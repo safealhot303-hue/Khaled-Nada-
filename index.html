@@ -12,79 +12,39 @@
   <link rel="stylesheet" href="./style.css?v=6.0">
 </head>
 <body class="intro-active">
-  <!-- Luxury envelope intro: removed from the document flow after opening/skipping. -->
-  <!-- Physical invitation intro: a single, interactive envelope scene. -->
+  <!-- Physical invitation intro: the scene is the visual reference, while the envelope layers are interactive. -->
   <div id="envelopeIntro" class="envelope-intro" role="dialog" aria-modal="true" aria-label="مقدمة الدعوة">
-    <div class="intro-light" aria-hidden="true"></div>
-    <div class="intro-sun" aria-hidden="true"></div>
-    <div class="intro-shadow-pattern" aria-hidden="true"></div>
+    <div class="intro-scene" aria-hidden="true"></div>
+    <div class="intro-vignette" aria-hidden="true"></div>
 
-    <div class="intro-flower flower-left" aria-hidden="true">
-      <i></i><i></i><i></i><i></i><i></i><b></b>
-    </div>
-    <div class="intro-flower flower-right" aria-hidden="true">
-      <i></i><i></i><i></i><i></i><i></i><b></b>
-    </div>
-    <div class="intro-flower flower-top" aria-hidden="true">
-      <i></i><i></i><i></i><i></i><i></i><b></b>
-    </div>
-
-    <header class="intro-heading">
-      <div class="intro-names">خالد &amp; ندى</div>
-      <div class="intro-ornament" aria-hidden="true"><span></span><b>♥</b><span></span></div>
-      <div class="intro-subtitle">AN INVITATION OF LOVE</div>
-    </header>
-
-    <div class="intro-table-card" aria-hidden="true">
-      <div class="table-card-inner">
-        <small>دعوة خطوبة</small>
-        <strong>خالد &amp; ندى</strong>
-        <span>♥</span>
-      </div>
-    </div>
-
-    <div class="envelope-scene">
-      <div class="envelope-ground-shadow" aria-hidden="true"></div>
-      <div id="envelope" class="envelope" aria-hidden="true">
-        <div class="envelope-back">
-          <div class="paper-fibers"></div>
-        </div>
-
-        <div class="envelope-letter">
-          <div class="letter-border">
+    <div class="intro-envelope-wrap">
+      <div class="intro-envelope-shadow" aria-hidden="true"></div>
+      <div id="envelope" class="physical-envelope" aria-hidden="true">
+        <div class="envelope-body-layer"></div>
+        <div class="envelope-pocket-layer"></div>
+        <div class="invitation-paper">
+          <div class="paper-edge"></div>
+          <div class="paper-content">
             <small>دعوة خطوبة</small>
             <strong>خالد &amp; ندى</strong>
-            <span>♥</span>
+            <span>بكل الحب ندعوكم لمشاركتنا فرحتنا</span>
+            <i>♥</i>
           </div>
         </div>
-
-        <div class="envelope-pocket">
-          <div class="paper-fibers"></div>
+        <div class="envelope-flap-layer"></div>
+        <div class="wax-seal-layer">
+          <img src="./assets/intro/seal.png" alt="K & N" draggable="false">
         </div>
-
-        <div class="envelope-flap">
-          <div class="flap-paper"></div>
-          <div class="flap-highlight"></div>
-        </div>
-
-        <div class="wax-seal">
-          <div class="seal-edge"></div>
-          <span>K &amp; N</span>
-        </div>
-
-        <div class="envelope-highlight" aria-hidden="true"></div>
+        <div class="opening-light" aria-hidden="true"></div>
       </div>
     </div>
 
-    <div class="intro-actions">
-      <button id="openInvitation" class="intro-open" type="button">
-        <span class="open-diamond" aria-hidden="true">◆</span>
-        <span>افتح الظرف</span>
-        <span class="open-diamond" aria-hidden="true">◆</span>
-      </button>
-      <button id="skipIntro" class="intro-skip" type="button">تخطي</button>
-      <div class="intro-hint">اضغط لفتح الدعوة</div>
+    <div class="intro-hit-area" aria-hidden="true">
+      <span class="sr-only">خالد وندى — دعوة خطوبة</span>
     </div>
+
+    <button id="openInvitation" class="intro-open-hit" type="button" aria-label="افتح الظرف"></button>
+    <button id="skipIntro" class="intro-skip-hit" type="button">تخطي</button>
   </div>
 
   <main id="siteContent" class="site-content" aria-hidden="true">

@@ -98,14 +98,20 @@ function skipEnvelope() {
 function openEnvelope() {
   if (introFinished) return;
 
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    playMusic();
+    revealMainSite();
+    return;
+  }
+
   openInvitation.disabled = true;
   skipIntro.disabled = true;
   intro.classList.add("is-opening");
 
-  // The tap/click is a user gesture, so keep the existing music behavior.
+  // The opening gesture is a direct user interaction, so audio playback is attempted here.
   playMusic();
 
-  // Let the physical opening finish before handing control to the existing invitation.
+  // Let the physical sequence finish before revealing the existing invitation.
   window.setTimeout(revealMainSite, 3300);
 }
 
