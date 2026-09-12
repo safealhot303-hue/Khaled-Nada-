@@ -1,32 +1,50 @@
-# دعوة خطوبة خالد وندى — Luxury White & Gold
+# Reference-faithful wedding intro
 
-نسخة محسّنة من مشروع الدعوة الحالي، مع الحفاظ على نفس المحتوى وترتيب الأقسام والوظائف الأساسية.
+This is a production-oriented React + TypeScript intro component built directly from the two supplied master reference images.
 
-## الملفات
+## What is implemented
 
-- `index.html` — هيكل الصفحة ومقدمة الظرف.
-- `style.css` — الهوية البيضاء والذهبية، Responsive، الحركة والـ UI.
-- `script.js` — العد التنازلي، الموسيقى، التقويم، نموذج RSVP، وScroll Reveal.
-- `assets/hero.webp` — نسخة محسّنة للويب من صورة الدعوة.
-- `assets/hero.jpg` — الصورة الأصلية كـ fallback.
-- `assets/engagement-music.mp3` — موسيقى الدعوة.
+- Full-viewport master-scene composition using the supplied reference image.
+- Real accessible DOM buttons over the exact visual positions.
+- Subtle pointer parallax around the envelope.
+- GSAP cinematic opening timeline:
+  1. button press/fade
+  2. scene focus/depth push
+  3. wax seal movement/release
+  4. hinged flap opening
+  5. invitation card emergence
+  6. card camera push
+  7. physical-entry style transition
+- Skip works immediately and cancels the active timeline.
+- No `localStorage` "seen" flag: every page load starts at the intro.
+- Keyboard accessible buttons and `prefers-reduced-motion` handling.
+- Responsive layout for desktop, tablet and mobile.
+- Reference-derived assets are included so the implementation is faithful and replaceable later with higher-resolution originals.
 
-## RSVP
+## Run
 
-النموذج مضبوط للإرسال إلى البريد:
+```bash
+npm install
+npm run dev
+```
 
-`Safe.alhot303@gmail.com`
+## Integrate with the existing wedding site
 
-يستخدم FormSubmit لأن GitHub Pages لا يشغّل Backend لإرسال البريد مباشرة. قد يطلب FormSubmit تأكيد البريد عند أول استخدام.
+Use the component:
 
-## النشر على GitHub Pages
+```tsx
+<ReferenceFaithfulIntro
+  onReveal={() => {
+    // Replace this with your existing site's reveal logic.
+    setIntroVisible(false);
+  }}
+/>
+```
 
-ارفع الملفات كما هي مع الحفاظ على مجلد `assets`، ثم فعّل GitHub Pages من الفرع `main` والمجلد `/(root)`.
+The intro intentionally does not own the main wedding site. `onReveal()` is the integration boundary so your current site remains unchanged.
 
-## ملاحظة حول الموسيقى
+## Important fidelity note
 
-المتصفحات الحديثة قد تمنع التشغيل الصوتي التلقائي. زر **افتح الدعوة** يُعامل كتفاعل مباشر من المستخدم، لذلك يحاول الموقع تشغيل الموسيقى فور فتح الظرف، مع بقاء زر التحكم متاحًا دائمًا.
+The two supplied images are the visual specification. The full first reference is retained as the master scene so the background, lighting, flowers, ribbon, stationery, shadows and typography remain pixel-faithful. The opening sequence then crossfades into layered DOM elements made from cropped portions of the same reference photography so the envelope and card can physically animate without introducing an unrelated redesign.
 
-
-## ملاحظة إصلاح صورة الـ Hero
-تمت معالجة مشكلة ظهور الصورة باستخدام عنصر صورة فعلي داخل قسم الـHero مع `picture/source` ونسخة WebP ونسخة JPG احتياطية. هذا يمنع مشاكل طبقات الـz-index التي كانت تجعل الصورة تقع خلف خلفية القسم، ويجعل المسار النسبي يعمل على GitHub Pages أيضًا.
+The included `envelope-source.png`, `envelope-body.png`, `envelope-flap.png`, `wax-seal.png`, and `invitation-card.png` are derived from the references and are easy to swap for higher-resolution source assets later.

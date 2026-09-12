@@ -1,0 +1,318 @@
+@import url("https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&display=swap");
+
+:root {
+  font-family: "Aref Ruqaa", serif;
+  color: #8a6337;
+  background: #dfc7b6;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+button {
+  font: inherit;
+}
+
+.reference-intro {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  background: #dcc1af;
+  perspective: 1400px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.reference-intro__scene {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 50%;
+  will-change: transform, filter;
+}
+
+.reference-intro__master {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  user-select: none;
+  pointer-events: none;
+  display: block;
+}
+
+.reference-intro__vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 43%, transparent 38%, rgba(76, 47, 30, 0.055) 100%),
+    linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.06));
+  mix-blend-mode: multiply;
+}
+
+.reference-intro__hover-light {
+  position: absolute;
+  left: 31.2%;
+  top: 29.2%;
+  width: 37.2%;
+  height: 42.2%;
+  border-radius: 9%;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 36% 28%, rgba(255, 241, 222, 0.24), transparent 46%);
+  filter: blur(12px);
+  transition: opacity 260ms ease;
+}
+
+.reference-intro:hover .reference-intro__hover-light {
+  opacity: 0.8;
+}
+
+.reference-intro__open-hit,
+.reference-intro__skip-hit {
+  position: absolute;
+  z-index: 12;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.reference-intro__open-hit {
+  left: 38.3%;
+  top: 73.8%;
+  width: 23.4%;
+  height: 8.1%;
+  min-width: 188px;
+}
+
+.reference-intro__skip-hit {
+  left: 45.5%;
+  top: 84.9%;
+  width: 9%;
+  height: 6.3%;
+  min-width: 84px;
+}
+
+.reference-intro__open-hit:focus-visible,
+.reference-intro__skip-hit:focus-visible {
+  box-shadow: 0 0 0 2px rgba(143, 102, 58, 0.55), 0 0 0 6px rgba(255,255,255,0.32);
+  border-radius: 999px;
+}
+
+.reference-intro__open-hit:hover {
+  transform: translateY(-1px) scale(1.01);
+}
+
+.reference-intro__open-hit:active {
+  transform: translateY(1px) scale(0.985);
+}
+
+.reference-intro__reconstruction {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reference-intro__envelope {
+  position: absolute;
+  left: 50%;
+  top: 31.1%;
+  width: min(43.6vw, 668px);
+  aspect-ratio: 670 / 458;
+  transform: translate(-50%, 0);
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.reference-intro__body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center bottom;
+  filter: drop-shadow(0 24px 28px rgba(77, 41, 24, 0.18));
+}
+
+.reference-intro__cavity {
+  position: absolute;
+  z-index: 1;
+  left: 2.3%;
+  right: 2.4%;
+  top: 6%;
+  height: 42%;
+  background:
+    linear-gradient(180deg, rgba(64, 38, 29, 0.42), rgba(87, 46, 35, 0.20)),
+    #a77967;
+  clip-path: polygon(0 0, 100% 0, 50% 90%);
+  opacity: 0.65;
+  transform: translateZ(-2px);
+}
+
+.reference-intro__flap {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  transform-origin: 50% 4%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+  filter: drop-shadow(0 8px 12px rgba(68, 37, 26, 0.13));
+}
+
+.reference-intro__seal {
+  position: absolute;
+  z-index: 7;
+  left: 50%;
+  top: 42%;
+  width: 21%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  will-change: transform, opacity;
+  filter: drop-shadow(0 9px 12px rgba(75, 41, 28, 0.19));
+}
+
+.reference-intro__card {
+  position: absolute;
+  z-index: 8;
+  left: 50%;
+  bottom: 1%;
+  width: 34%;
+  height: auto;
+  transform: translate(-50%, 32%);
+  transform-origin: 50% 100%;
+  opacity: 0;
+  filter: drop-shadow(0 24px 22px rgba(79, 49, 36, 0.17));
+  will-change: transform, opacity;
+}
+
+.demo-site {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: #f3e5d8;
+  color: #7f5a34;
+}
+
+.demo-site__inner {
+  width: min(680px, 92vw);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.demo-site__eyebrow {
+  letter-spacing: 0.3em;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.demo-site h1 {
+  font-size: clamp(2.6rem, 8vw, 5.8rem);
+  margin: 0.3em 0 0.15em;
+  font-family: "Aref Ruqaa", serif;
+}
+
+.demo-site p {
+  font-size: 1.1rem;
+}
+
+.demo-site button {
+  margin-top: 1.5rem;
+  border: 1px solid rgba(127, 90, 52, 0.55);
+  background: transparent;
+  color: inherit;
+  border-radius: 999px;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .reference-intro__open-hit {
+    left: 30%;
+    width: 40%;
+    min-width: 0;
+  }
+
+  .reference-intro__skip-hit {
+    left: 41%;
+    width: 18%;
+    min-width: 0;
+  }
+
+  .reference-intro__envelope {
+    width: min(70vw, 680px);
+    top: 33%;
+  }
+}
+
+@media (max-width: 560px) {
+  .reference-intro__master {
+    object-position: 50% 48%;
+  }
+
+  .reference-intro__hover-light {
+    left: 15%;
+    top: 29%;
+    width: 70%;
+    height: 35%;
+  }
+
+  .reference-intro__envelope {
+    top: 34.5%;
+    width: 92vw;
+  }
+
+  .reference-intro__open-hit {
+    top: 73.2%;
+    left: 19%;
+    width: 62%;
+    height: 8.9%;
+  }
+
+  .reference-intro__skip-hit {
+    top: 83.9%;
+    left: 33%;
+    width: 34%;
+    height: 8.4%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reference-intro__hover-light {
+    transition: none;
+  }
+}
